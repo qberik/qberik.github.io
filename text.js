@@ -12,5 +12,5 @@ request.send();
 request.onload = function() {
   var response = request.response;
   console.log(  Math.round( response.result * 5 ) / 10 );
-  document.getElementById('bottom_text').innerHTML = ( Math.round( response.result * 5 ) / 10 ) + " рублей";
+  document.getElementById('bottom_text').innerHTML = "уже " + ( Math.round( response.result * 5 ) / 10 ) + " рублей";
 }
