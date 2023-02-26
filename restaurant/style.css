@@ -1,0 +1,197 @@
+ body, html {
+  height: 100%;
+  margin: 0px;
+}
+
+.bg{
+
+  background-image: url("static/blur.jpg");
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow:scroll;
+}
+
+a {
+  color: #e02b7c;
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.header-title {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.header-link {
+  font-family: Helvetica, Arial, sans-serif;
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+}
+
+.header-link:hover {
+  background-color: #0069d9;
+}
+
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    padding: 2rem 4rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .content {
+    padding: 2rem;
+    font-size: 1.5rem;
+  }
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+#menu_weight {
+  text-align: right;
+}
+
+th, td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+th {
+  font-weight: bold;
+  background-color: #e8e9ea;
+}
+
+thead th {
+  border-bottom: 2px solid #dee2e6;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tbody td {
+  border-top: none;
+}
+
+tbody td:first-child {
+  font-weight: bold;
+}
+
+tbody td:last-child {
+  text-align: right;
+}
+
+tbody tr:nth-child(3n+1) td {
+  background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(3n+2) td {
+  background-color: #f5f5f5;
+}
+
+tbody tr:nth-child(3n) td {
+  background-color: #f8f8f8;
+}
+
+
+/* Стили для списка работников */
+.employees-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.employees-list li {
+  width: 30%;
+  background-color: #f2f2f2;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+}
+
+.employees-list img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.employee-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.employee-info h2 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.employee-info p {
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+/* При наведении курсора на элемент списка */
+.employees-list li:hover {
+  background-color: #e6e6e6;
+}
+
+
+@media only screen and (max-width: 767px) {
+  /* Стили для мобильной версии */
+  .employees-list {
+    flex-direction: column;
+  }
+  
+  .employees-list li {
+    width: 90%;
+  }
+  
+  .employees-list img {
+    margin-bottom: 10px;
+  }
+}
