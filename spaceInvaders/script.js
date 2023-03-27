@@ -28,6 +28,8 @@ class Utils {
   }
 }
 
+class asteroid_part {}
+
 let = aliens_len = 9;
 aliens = [
   Array(aliens_len).fill(1),
@@ -75,13 +77,57 @@ aliens_anim = true;
 aliens_offset = 20 / 1000;
 aliens_anim_time_speed = aliens_anim_time_speed_base;
 aliens_anim_time_speed_decrease =
-  (-1 * aliens_anim_time_speed_base) / (aliens.length * aliens_len);
+  ((-1 * aliens_anim_time_speed_base) / (aliens.length * aliens_len)) * 0.9;
 aliens_anim_time = 0;
 aliens_anim_state = true;
 
 game_state = 0;
 game_score = 0;
 game_time = 0;
+
+shoot_chance = 0.0005;
+
+class alien_bullet {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.w = fire_w * a;
+    this.h = fire_h * a;
+    this.speed = fire_anim_time * 2;
+    this.fire_time = 0;
+    this.remove = false;
+  }
+
+  draw() {
+    if (millis() > this.fire_time) {
+      // console.log(this.x, this.y, this.w, this.h);
+      fill(255);
+      rect(this.x, this.y, this.w, this.h);
+      this.fire_time = millis() + this.speed;
+      this.y += this.h;
+    }
+
+    if (this.x > a) {
+      this.remove = true;
+    }
+
+    let ax1 = player_pos * a;
+    let ay1 = player_top * a;
+    let ax2 = ax1 + entity_w * a;
+    let ay2 = ay1 + entity_h * a;
+    let bx1 = this.x;
+    let by1 = this.y;
+    let bx2 = bx1 + this.w;
+    let by2 = by1 + this.h;
+    if (!(ax1 > bx2 || ax2 < bx1 || ay1 > by2 || ay2 < by1)) {
+      this.remove = true;
+      game_state = 3;
+      play_sound(100, 1, 500);
+    }
+  }
+}
+
+alien_bullets = [];
 
 function preload() {
   p = loadImage("resources/p.png");
@@ -98,6 +144,7 @@ function preload() {
   pixels = loadFont("resources/SummerPixel22Regular-jE0W7.ttf");
 }
 
+let osc;
 function setup() {
   p5Div = document.getElementById("canvas");
   const p5Canvas = createCanvas(
@@ -110,12 +157,39 @@ function setup() {
 
   background(255);
   textFont(pixels);
+  osc = new p5.Oscillator("square");
+  pulse = new p5.Oscillator("square");
+  pulse3 = new p5.Oscillator("square");
   // console.log(aliens);
 
   //document.getElementById("canvas").appendChild(button);
 
   // put setup code here
+  // osc = new p5.Oscillator("square");
 }
+
+bg_sound = 120;
+play_sound = function (f, a, t) {
+  // osc =
+  osc.freq(f);
+  osc.amp(a);
+  osc.start();
+  osc.stop(t / 1000);
+};
+play_sound2 = function (f, a, t) {
+  // osc =
+  pulse.freq(f);
+  pulse.amp(a);
+  pulse.start();
+  pulse.stop(t / 1000);
+};
+play_sound3 = function (f, a, t) {
+  // osc =
+  pulse3.freq(f);
+  pulse3.amp(a);
+  pulse3.start();
+  pulse3.stop(t / 1000);
+};
 
 function easeInOutQuint(x) {
   return x < 0.5 ? 16 * x * x * x * x * x : 1 - Math.pow(-2 * x + 2, 5) / 2;
@@ -132,6 +206,8 @@ function draw() {
     text("PRESS SPACE TO START", 0.23 * a, 0.6 * a);
 
     if (keyIsDown(32)) {
+      play_sound(600, 0.5, 100);
+      // osc.start();
       game_state = 1;
       player_fire_cooldown = millis() + 200;
     }
@@ -145,9 +221,25 @@ function draw() {
       rect(a * fire_x, a * fire_y, a * fire_w, a * fire_h);
     }
 
+    for (let i = 0; i < alien_bullets.length; i++) {
+      alien_bullets[i].draw();
+    }
+
     for (let i = 0; i < aliens.length; i++) {
       for (let j = 0; j < aliens[i].length; j++) {
         if (aliens[i][j] != 0) {
+          // console.log("A");
+          // console.log(Math.random() <= shoot_chance);
+          if (Math.random() <= shoot_chance) {
+            // console.log("a");
+            alien_bullets.push(
+              new alien_bullet(
+                aliens_x * a + (entity_w + entity_w_spacing) * j * a,
+                aliens_y * a + (entity_h + entity_h_spacing) * i * a
+              )
+            );
+          }
+
           if (aliens[i][j] == 1) {
             if (aliens_anim_state) {
               image(
@@ -214,7 +306,20 @@ function draw() {
       }
     }
 
+    // console.log(alien_bullets);
+
+    for (let i = 0; i < alien_bullets.length; i++) {
+      if (alien_bullets[i].remove) {
+        //alien_bullets[i].splice(i, 1);
+      }
+    }
+
     if (millis() > aliens_anim_time) {
+      play_sound(bg_sound, 0.5, 100);
+      bg_sound -= 20;
+      if (bg_sound < 60) {
+        bg_sound = 120;
+      }
       if (aliens_direction < 10) {
         if (aliens_x >= 0.3) {
           aliens_direction = 13;
@@ -260,16 +365,16 @@ function draw() {
     if (keyIsDown(32)) {
       if (!player_fire && millis() > player_fire_cooldown) {
         player_fire = true;
+        play_sound2(400, 1, 60);
         fire_x = player_pos + entity_w / 2;
         fire_y = player_top - fire_h;
-        console.log("a");
+        //console.log("a");
       }
     }
 
     //collision detection
     if (player_fire) {
       if (millis() > fire_time) {
-        console.log(fire_x, fire_y);
         fire_y -= 0.05;
         fire_time = millis() + fire_anim_time;
       }
@@ -286,7 +391,7 @@ function draw() {
             ax2 = ax1 + entity_w;
             ay2 = ay1 + entity_h;
             bx1 = fire_x;
-            by1 = fire_y;
+            by1 = fire_y - fire_h * 2;
             bx2 = bx1 + fire_w;
             by2 = by1 + fire_h;
             if (!(ax1 > bx2 || ax2 < bx1 || ay1 > by2 || ay2 < by1)) {
@@ -295,6 +400,9 @@ function draw() {
               player_fire = false;
               hit = true;
               aliens_anim_time_speed += aliens_anim_time_speed_decrease;
+              // play_sound2(800, 1, 30);
+              // play_sound2(900, 1, 30);
+              play_sound3(1000, 1, 100);
             }
           }
         }
@@ -311,6 +419,7 @@ function draw() {
     }
     if (all_kill) {
       game_state = 2;
+      play_sound(600, 1, 500);
       game_time = millis() + 1000;
     }
 
@@ -322,6 +431,7 @@ function draw() {
             player_top - entity_h
           ) {
             game_state = 3;
+            play_sound(100, 1, 500);
           }
         }
       }
@@ -356,6 +466,7 @@ function draw() {
       aliens_anim_time_speed = aliens_anim_time_speed_base;
       aliens_anim_time = 0;
       aliens_anim_state = true;
+      alien_bullets = [];
     }
   }
   if (game_state == 3) {
@@ -387,6 +498,7 @@ function draw() {
       aliens_anim_time_speed = aliens_anim_time_speed_base;
       aliens_anim_time = 0;
       aliens_anim_state = true;
+      alien_bullets = [];
     }
   }
 }
