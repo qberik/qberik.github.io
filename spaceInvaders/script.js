@@ -28,6 +28,10 @@ class Utils {
   }
 }
 
+joke = false;
+joke1 = false;
+joke2 = false; // from right
+
 class asteroid_part {}
 
 let = aliens_len = 9;
@@ -44,7 +48,7 @@ let b1;
 let b2;
 let c1;
 let c2;
-
+var vid;
 let p;
 
 let player_pos = 0.05;
@@ -56,6 +60,12 @@ let entity_h_spacing = 30 / 1000;
 let player_speed = 80 / 100;
 let player_fire_cooldown = 0;
 let player_fire = false;
+
+anim_state = 0;
+anim_state_pos = 1;
+anim_fire = 0;
+anim_fire_pos = 0.87;
+anim_fire_time = 0;
 
 fire_speed = 100 / 1000;
 fire_w = 8 / 1000;
@@ -146,6 +156,17 @@ function preload() {
 
 let osc;
 function setup() {
+  vid = document.createElement("video");
+  vid.setAttribute(
+    "src",
+    "https://github.com/ShatteredDisk/rickroll/raw/master/rickroll.mp4"
+  );
+  // print(document.getElementsByClassName("videodiv")[0]);
+  // print();
+  vid.setAttribute("preload", "");
+  vid.setAttribute("class", "webvideo");
+  // document.getElementsById("body").appendChild(vid);
+
   p5Div = document.getElementById("canvas");
   const p5Canvas = createCanvas(
     Utils.elementWidth(p5Div),
@@ -160,6 +181,10 @@ function setup() {
   osc = new p5.Oscillator("square");
   pulse = new p5.Oscillator("square");
   pulse3 = new p5.Oscillator("square");
+
+  if (Math.random() <= 0.7) {
+    joke = true;
+  }
   // console.log(aliens);
 
   //document.getElementById("canvas").appendChild(button);
@@ -167,7 +192,7 @@ function setup() {
   // put setup code here
   // osc = new p5.Oscillator("square");
 }
-
+video_time = 1000000;
 bg_sound = 120;
 play_sound = function (f, a, t) {
   // osc =
@@ -223,6 +248,55 @@ function draw() {
 
     for (let i = 0; i < alien_bullets.length; i++) {
       alien_bullets[i].draw();
+    }
+
+    if (joke2) {
+      if (anim_state == 0) {
+        //asdasdasd
+        anim_state_pos -= 0.015;
+        if (anim_state_pos <= 0.85) {
+          anim_state = 1;
+          anim_fire_time = millis() + 1000;
+        }
+      } else if (anim_state == 1) {
+        if (millis() < anim_fire_time) {
+          anim_state = 2;
+          anim_fire = true;
+        }
+      } else if (anim_state == 2) {
+        anim_fire_pos -= 0.01;
+        if (anim_fire_pos - entity_w < player_pos) {
+          game_state = 3;
+          play_sound(100, 1, 500);
+          video_time = millis() + 1000;
+        }
+      }
+
+      if (anim_fire) {
+        rect(
+          anim_fire_pos * a,
+          (player_top + entity_h / 2) * a,
+          fire_h * a,
+          fire_w * a
+        );
+      }
+      if (aliens_anim_state) {
+        image(
+          a1,
+          anim_state_pos * a + entity_w * a,
+          player_top * a,
+          a * entity_w,
+          a * entity_h
+        );
+      } else {
+        image(
+          a2,
+          anim_state_pos * a + entity_w * a,
+          player_top * a,
+          a * entity_w,
+          a * entity_h
+        );
+      }
     }
 
     for (let i = 0; i < aliens.length; i++) {
@@ -409,13 +483,18 @@ function draw() {
       }
     }
 
+    alient_count = 0;
     all_kill = true;
     for (let i = 0; i < aliens.length; i++) {
       for (let j = 0; j < aliens[i].length; j++) {
         if (aliens[i][j] != 0) {
           all_kill = false;
+          alient_count += 1;
         }
       }
+    }
+    if (joke && alient_count < 5) {
+      joke2 = true;
     }
     if (all_kill) {
       game_state = 2;
@@ -467,38 +546,53 @@ function draw() {
       aliens_anim_time = 0;
       aliens_anim_state = true;
       alien_bullets = [];
+      anim_state = 0;
+      anim_state_pos = 1;
+      anim_fire = 0;
+      anim_fire_pos = 0.87;
+      anim_fire_time = 0;
     }
   }
   if (game_state == 3) {
+    if (joke && millis() > video_time) {
+      document.getElementsByClassName("videodiv")[0].appendChild(vid);
+      vid.play();
+    }
     textSize(0.1 * a);
     text("YOU LOSE", 0.31 * a, 0.2 * a);
     text("SCORE:" + String(game_score), 0.25 * a, 0.4 * a);
     textSize(0.06 * a);
     text("PRESS SPACE TO RESTART", 0.21 * a, 0.6 * a);
+    if (!(joke && millis() > video_time)) {
+      if (keyIsDown(32) && millis() > game_time) {
+        game_state = 1;
+        player_fire_cooldown = millis() + 200;
+        game_score = 0;
+        aliens = [
+          Array(aliens_len).fill(1),
+          Array(aliens_len).fill(2),
+          Array(aliens_len).fill(2),
+          Array(aliens_len).fill(3),
+          Array(aliens_len).fill(3),
+        ];
 
-    if (keyIsDown(32) && millis() > game_time) {
-      game_state = 1;
-      player_fire_cooldown = millis() + 200;
-      game_score = 0;
-      aliens = [
-        Array(aliens_len).fill(1),
-        Array(aliens_len).fill(2),
-        Array(aliens_len).fill(2),
-        Array(aliens_len).fill(3),
-        Array(aliens_len).fill(3),
-      ];
+        aliens_x = 140 / 1000;
+        aliens_y = 100 / 1000;
+        aliens_speed = 0.3;
+        aliens_direction = 0;
 
-      aliens_x = 140 / 1000;
-      aliens_y = 100 / 1000;
-      aliens_speed = 0.3;
-      aliens_direction = 0;
-
-      aliens_anim = true;
-      aliens_offset = 20 / 1000;
-      aliens_anim_time_speed = aliens_anim_time_speed_base;
-      aliens_anim_time = 0;
-      aliens_anim_state = true;
-      alien_bullets = [];
+        aliens_anim = true;
+        aliens_offset = 20 / 1000;
+        aliens_anim_time_speed = aliens_anim_time_speed_base;
+        aliens_anim_time = 0;
+        aliens_anim_state = true;
+        alien_bullets = [];
+        anim_state = 0;
+        anim_state_pos = 1;
+        anim_fire = 0;
+        anim_fire_pos = 0.87;
+        anim_fire_time = 0;
+      }
     }
   }
 }
