@@ -29,6 +29,8 @@ html {
   justify-content: center;
   align-content: center;
   flex-direction: column;
+
+
 }
 
 #field {
@@ -38,7 +40,7 @@ html {
   grid-gap: 1.4svh;
   background-color: var(--dark-gray);
   padding: 0.5rem;
-  border-radius: 0.4rem;
+  border-radius: 1svh;
   justify-content: center;
 
   min-height: 90svh;
@@ -53,9 +55,9 @@ html {
 }
 
 .screen {
-  border-radius: 0.4rem;
+  border-radius: 1svh;
   padding: 0.3rem;
-
+  padding-right: 0.4rem;
   display: grid;
   justify-content: right;
   align-content: center;
@@ -63,8 +65,17 @@ html {
 }
 
 .btn {
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  font: inherit;
+  border-radius: 0;
+  appearance: none;
+
+
   padding: 0.3rem;
-  border-radius: 0.4rem;
+  border-radius: 1svh;
 
   transition: 100ms ease-out;
 }
@@ -92,6 +103,10 @@ html {
 
 .light-text {
   color: var(--ligt);
-  font-size: 3rem;
+  font-size: 6svh;
   user-select: none;
+}
+
+.disable-dbl-tap-zoom {
+  touch-action: manipulation;
 }

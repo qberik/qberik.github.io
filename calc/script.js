@@ -6,7 +6,7 @@ class Calc {
     this.prev = ''
     this.curr = ''
     this.op = ''
-    this.max_char = 10
+    this.max_char = 14
   }
 
   clear(){
