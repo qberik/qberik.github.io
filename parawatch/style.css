@@ -1,0 +1,48 @@
+body {
+  --light: #f0f8ff;
+  --dark: #323232;
+  --darker: #222222;
+  --darkest: #111111;
+
+  font-family: "Montserrat", sans-serif;
+  color: var(--light);
+  background-color: var(--darker);
+}
+
+.centered {
+  display: grid;
+  justify-items: center;
+  margin: 0 auto;
+  margin-top: 20vh;
+}
+
+#time {
+  font-size: calc(1rem + 12vw);
+  font-variant: tabular-nums;
+}
+
+#text {
+  font-size: calc(0.5rem + 4vw);
+}
+
+.button {
+  padding: 5px 7px;
+  background-color: var(--dark);
+  color: var(--light);
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--darkest);
+}
+
+.spacing {
+  margin-top: 7px;
+}
+
+.text_small {
+  text-align: center;
+  font-size: calc(0.5rem + 3vw);
+  margin: 0px;
+}
