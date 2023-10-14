@@ -62,22 +62,22 @@ if (localStorage.getItem("timeZone") === null) {
 function start_clock() {
   local_date = new Date();
   // День недели с учётом временной зоны
-  let format_weekday = Intl.DateTimeFormat([], {
+  let format_weekday = Intl.DateTimeFormat(["en-GB"], {
     timeZone: localStorage.timeZone,
     weekday: "short",
   });
   weekday = format_weekday.format(local_date);
   // Дата-время с учётом временной зоны
-  let format_full_date = Intl.DateTimeFormat([], {
-    timeZone: localStorage.timeZone,
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-  });
-  full_date = new Date(format_full_date.format(local_date));
+  function convert_timeZone(date, tzString) {
+    return new Date(
+      (typeof date === "string" ? new Date(date) : date).toLocaleString(
+        "en-US",
+        { timeZone: tzString }
+      )
+    );
+  }
+
+  full_date = convert_timeZone(local_date, localStorage.timeZone);
 
   draw_clock = (text, time) => {
     document.getElementById("text").innerText = text;
