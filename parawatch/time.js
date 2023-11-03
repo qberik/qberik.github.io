@@ -9,6 +9,15 @@ const seconds_in_day = 60 * 60 * 24;
 // Время начала каждой пары в секундах с начала дня
 const start_time_para = [30600, 37200, 43800, 51300, 57900, 64200, 70500];
 
+// Глобальная переменная для подсчёта времени и дня недели
+var day_seconds = 0;
+var weekday = "";
+
+draw_clock = (text, time) => {
+  document.getElementById("text").innerText = text;
+  document.getElementById("time").innerText = time;
+};
+
 // спёр отсюда
 // https://stackoverflow.com/questions/1091372/getting-the-clients-time-zone-and-offset-in-javascript
 const local_timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -60,6 +69,11 @@ if (localStorage.getItem("timeZone") === null) {
 //localStorage.timeZone = "Europe/Moscow";
 
 function start_clock() {
+  setup_clock();
+  setInterval(update_clock, 1000);
+}
+
+function setup_clock() {
   local_date = new Date();
   // День недели с учётом временной зоны
   let format_weekday = Intl.DateTimeFormat(["en-GB"], {
@@ -79,28 +93,30 @@ function start_clock() {
 
   full_date = convert_timeZone(local_date, localStorage.timeZone);
 
-  draw_clock = (text, time) => {
-    document.getElementById("text").innerText = text;
-    document.getElementById("time").innerText = time;
-  };
+  // Количество секунд с начала текущего дня
+  day_seconds =
+    (full_date -
+      new Date(
+        full_date.getFullYear(),
+        full_date.getMonth(),
+        full_date.getDate(),
+        0,
+        0,
+        0,
+        0
+      )) /
+    1000;
+}
+
+function update_clock() {
+  if (day_seconds > seconds_in_day) {
+    // Раз в день надо обновить день, ведь может быть выходной
+    setup_clock();
+  }
 
   if (weekday === "Sun") {
     draw_clock("СЕГОДНЯ ВЫХОДНОЙ", "ПАР НЕТ");
   } else {
-    // Количество секунд с начала текущего дня
-    let day_seconds =
-      (full_date -
-        new Date(
-          full_date.getFullYear(),
-          full_date.getMonth(),
-          full_date.getDate(),
-          0,
-          0,
-          0,
-          0
-        )) /
-      1000;
-
     // Сколько пар успело начаться
     const index_para_started = start_time_para
       .map((i) => day_seconds >= i)
@@ -149,5 +165,6 @@ function start_clock() {
       }
     }
   }
-  setInterval(start_clock, 1000);
+
+  day_seconds += 1;
 }
