@@ -6,7 +6,7 @@ function validateNumberInput(event) {
   }
 }
 
-let money_data = [];
+let money_data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 function fetch_money() {
   const base_url =
@@ -29,9 +29,9 @@ function fetch_money() {
     base_url + "0.01.jpg",
   ];
 
-  for (url of money_url) {
-    axios.get(url, { responseType: "blob" }).then((d) => {
-      money_data.push(d.data);
+  for (let i = 0; i < money_url.length; i++) {
+    axios.get(money_url[i], { responseType: "blob" }).then((d) => {
+      money_data[i] = d.data;
     });
   }
 }
@@ -63,7 +63,11 @@ async function download_money(amout) {
   let money_count = new Array(money_amount.length).fill(0);
 
   // Ждём пока картинки не зафетчатся
-  while (money_data.length != money_amount.length) {
+  while (
+    money_data.filter((i) => {
+      return i == 0;
+    }).length > 0
+  ) {
     await new Promise((r) => setTimeout(r, 500));
   }
 
