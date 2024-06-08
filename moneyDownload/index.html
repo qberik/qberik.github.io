@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.svg" />
+    <title>Скачать деньги</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
+  </head>
+  <body class="flex flex-col h-screen justify-center">
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .emoji {
+        position: absolute;
+        top: -50px;
+        font-size: 3rem;
+        animation: fall 1.5s ease-in forwards;
+      }
+
+      @keyframes fall {
+        to {
+          top: 100vh;
+        }
+      }
+
+      input:focus {
+        outline: none;
+      }
+    </style>
+
+    <div class="flex mx-10 flex-col sm:flex-row justify-center gap-4">
+      <div class="flex flex-row gap-4">
+        <div class="text-3xl outline-0 py-2">₽</div>
+
+        <input
+          class="text-3xl flex-grow sm:w-60"
+          id="input"
+          oninput="validateNumberInput(event)"
+        />
+      </div>
+
+      <button
+        class="px-4 py-2 text-3xl bg-black text-white inline-flex items-center justify-center whitespace-nowrap rounded-xl font-medium"
+        id="download"
+      >
+        Скачать
+      </button>
+    </div>
+  </body>
+</html>
