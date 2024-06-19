@@ -12,7 +12,7 @@ document.body.addEventListener(
 );
 
 function start_animation() {
-  var audio = new Audio("res/win95_sound.wav");
+  var audio = new Audio("res/win95_sound.mp3");
   audio.play();
   document.getElementById("end_image").classList.remove("hidden");
   document.getElementById("start_image").classList.add("animate-fade");
