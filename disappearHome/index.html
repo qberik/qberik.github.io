@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ой, мама пришла</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bgStart: "#799ff0",
+              bgEnd: "#a5bfe9",
+            },
+            animation: {
+              fade: "fadeOut 2s ease-in-out forwards",
+            },
+
+            // that is actual animation
+            keyframes: (theme) => ({
+              fadeOut: {
+                "0%": { opacity: 100 },
+                "25%": { opacity: 100 },
+                "100%": { opacity: 0 },
+              },
+            }),
+          },
+        },
+      };
+    </script>
+    <script src="script.js" defer></script>
+  </head>
+  <body
+    class="h-screen flex justify-center sm:px-12 relative bg-gradient-to-b from-25% from-bgStart to-bgEnd to-45%"
+  >
+    <div class="absolute flex p-8 justify-center h-screen">
+      <img
+        id="end_image"
+        class="object-scale-down hidden"
+        src="res/end_image.jpg"
+      />
+    </div>
+    <div class="absolute flex p-8 justify-center h-screen">
+      <img
+        id="start_image"
+        class="object-scale-down"
+        src="res/start_image.jpg"
+      />
+    </div>
+  </body>
+</html>
