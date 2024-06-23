@@ -72,6 +72,9 @@ const resize_images = () => {
       logging: true,
       allowTaint: true,
       useCORS: true,
+      width: e.target.width,
+      height: e.target.height,
+      scale: 3,
     }).then((canvas) => {
       let link = document.createElement("a");
       link.download = "cristian_bale_meme.png";

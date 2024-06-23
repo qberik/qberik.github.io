@@ -7,6 +7,14 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Тейлвин чёт ломает в либе для скриншотов https://github.com/niklasvh/html2canvas/issues/2775 -->
+    <style type="text/tailwindcss">
+      @layer base {
+        img {
+          @apply inline-block;
+        }
+      }
+    </style>
     <script src="script.js" defer></script>
   </head>
   <body class="p-[2vw]">
@@ -175,21 +183,21 @@
         Предпросмотр
       </div>
 
-      <div class="size-[92vw] mx-auto">
-        <div id="image" class="flex flex-col">
+      <div class="w-[92vw] mx-auto">
+        <div id="image" class="flex flex-col ring">
           <div class="flex flex-row">
             <img crossorigin="anonymous" id="left-image" />
             <img crossorigin="anonymous" id="right-image" />
           </div>
           <div
             id="down-text"
-            class="py-[3vw] text-[4vw] font-bold flex flex-col text-center"
+            class="mt-[3vw] mb-[2vw] text-[4vw] font-bold flex flex-col text-center"
           ></div>
         </div>
 
         <button
           id="download-button"
-          class="px-3 py-1 mt-4 text-md bg-black text-white inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium"
+          class="px-3 py-1 mx-auto w-full mt-5 text-md bg-black text-white inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium"
         >
           Скачать
           <svg
