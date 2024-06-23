@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680.764" height="528.354" viewBox="0 0 180.119 139.794"><g transform="translate(-13.59 -66.639)" paint-order="fill markers stroke"><path fill="#d0d0d0" d="M13.591 66.639H193.71v139.794H13.591z"/><path d="m118.507 133.514-34.249 34.249-15.968-15.968-41.938 41.937H178.726z" opacity=".675" fill="#fff"/><circle cx="58.217" cy="108.555" r="11.773" opacity=".675" fill="#fff"/><path fill="none" d="M26.111 77.634h152.614v116.099H26.111z"/></g><style id="stylish-1" class="stylish" type="text/css">@-moz-document domain("donmai.us") {
+div#news-updates
+{
+    background: #000;
+    border-bottom: 1px solid #666;
+    color: #b5b5b5;
+}
+ #top
+{
+    background-color: #181818;
+}
+body
+{
+    background-color: #040001;
+}
+#page
+{
+    background-color: rgba(0, 0, 0, 0);
+}
+header#top menu
+{
+    background: #191919;
+    border-top: 1px solid #2f2e2e;
+}
+header#top menu.main li.current a
+{
+    background: #2f2e2e;
+}
+h1
+{
+    color: #FB4B2B;
+}
+h2
+{
+    color: #06c1c1;
+}
+p
+{
+	color:gray;
+}
+
+div#c-comments div#a-index div.header span.info
+{
+	color: #8a8a8a;
+}
+
+div#page {
+    margin: 0 20px;
+    padding: 0;
+}
+
+aside#sidebar
+{
+	    background: #181818;
+    padding-left: 10px;
+}
+
+div#posts
+{
+	background: #181818;
+    margin-left: 10px;
+	padding-top: 10px;
+}
+
+a:focus {
+    outline: none;
+}
+menu#post-sections
+{
+    background: #181818;
+    margin-left: 10px;
+    padding-top: 10px;
+    margin-bottom: 0px;
+	padding-left: 10px;
+}
+div#c-posts div#a-index menu#post-sections {
+    margin-bottom: 0em;
+}
+li.active 
+{
+	padding-left: 22px;
+}
+/*--comments--*/
+div#c-comments div#a-index div.post, div#c-comments div#a-show div.post
+{
+    margin-bottom: 10px;
+    padding-top: 10px;
+    background-color: #14171A;
+}
+div.body.prose
+{
+	color:#808080;
+}
+blockquote
+{
+	background: #292929;
+}
+time
+{
+	color: #505050;
+}
+/*--paginator--*/
+menu li
+{
+    color: #4c4c4c;
+}
+div.paginator li a
+{
+	border: 1px solid #243138;
+}
+/*--artist--*/
+table.striped tr.even
+{
+    background-color: #181D20;
+}
+table.striped tbody tr
+{
+    border-bottom: 1px solid #384248;
+	background: #14171A;
+    color: #9c9c9c;
+}
+table.striped td:hover,table.striped th:hover
+{
+	background:#222222;
+}
+label
+{
+	color:#808080;
+}
+/*--??-*/
+table.striped tr.even:hover
+{
+	background:transparent;
+}
+table.striped tbody tr:hover
+{
+	background:transparent;
+}
+div.prose li
+{
+    list-style-type: disc;
+    color: #556079;
+}
+table {
+    color: #808080;
+}
+/*--settings--*/
+div#c-users div#a-edit .active
+{
+    color: #b12727;
+}
+/*--footer--*/
+footer#page-footer
+{
+    border-top: 1px solid #242a2f;
+}
+ #page-footer
+{
+    background-color: #14171a;
+    color: #808080;
+}
+/*-fixes-*/
+div.prose div.expandable
+{
+    border: 1px inset #0073ff;
+}
+div.prose div.expandable-header span
+{
+    color: #f00;
+}
+div#c-posts div#a-show #artist-commentary
+{
+    border: 0px solid #CCC;
+    border-left: 3px solid #80b9ff;
+    border-radius: 0px;
+    background-color: #1b1b1b;
+}
+h3
+{
+    color: #ce3b3b;
+}
+div#c-posts div.nav-notice
+{
+    background: #1b1b1b;
+    border: 0px solid red;
+}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+    border-bottom-right-radius: 0px;
+}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+    border-bottom-left-radius: 0px;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+    border-top-right-radius: 0px;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+    border-top-left-radius: 0px;
+}
+ div#c-posts div#a-show #search-seq-nav li:hover
+{
+    background: rgba(0, 0, 0, 0);
+}
+span.search-name
+{
+	color: #27a25f;
+}
+div#c-posts aside#sidebar&gt;section&gt;ul li
+{
+    color: #903636;
+}
+div.prose h4
+{
+    color: #19b77e;
+}
+input
+{
+    background-color: transparent;
+	border: 0px solid red;
+	border-left: 3px solid #0073ff;
+	padding-left: 3px;
+        color: #12a59f;
+}
+header#top menu form input
+{
+    color: #00fdff;
+}
+button, input[type="button"], input[type="reset"], input[type="submit"]
+{
+    color: #00fff5;
+}
+/*-spoiler-*/
+.spoiler a {
+    color: #946802;
+}
+.spoiler {
+    color: #808080;
+}
+.spoiler {
+    background: #808080 !important;
+}
+/*-new-*/
+strong,li,h3, h4, h5, h6 {
+    color: #909090;
+}
+div.prose h6,div.prose h5
+{
+    color: #00945f;
+}
+}</style></svg>

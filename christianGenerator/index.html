@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="favicon.ico" />
+    <title>Кристиан Бейл...</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body class="p-[2vw]">
+    <!-- Чтобы убрать input ring, у меня не получается это сделать через tailwind -->
+    <style>
+      input:focus {
+        outline: none;
+      }
+    </style>
+
+    <div class="px-[2vw] pb-8 flex flex-col gap-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3">
+        <div
+          class="order-1 md:order-1 inline-flex text-lg font-medium leading-none mb-2 item-center text-start"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5 mr-2 shrink-0 self-center"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+            />
+          </svg>
+          Изображение слева (мемная картинка)
+        </div>
+        <div
+          class="order-4 mt-4 md:mt-0 md:order-2 inline-flex w-full justify-end text-lg font-medium leading-none mb-2 item-center text-end"
+        >
+          (Кристиан) Изображение Справа
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5 ml-2 shrink-0 self-center"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </div>
+
+        <div class="order-2 md:order-3 flex flex-col inline-flex w-full gap-2">
+          <div class="w-full">
+            <div class="text-sm font-medium leading-none mb-1">
+              или Картинка
+            </div>
+            <input
+              id="left-image-url"
+              class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm bg-transparent text-sm font-medium"
+              placeholder="ссылка"
+            />
+          </div>
+
+          <!-- <p class="">или</p> -->
+
+          <div class="w-full">
+            <div class="text-sm font-medium leading-none mb-1">или Файл</div>
+            <input
+              id="left-image-file"
+              class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm bg-transparent text-sm font-medium file:border-0 file:bg-transparent file:text-sm"
+              type="file"
+              accept="image/*"
+            />
+          </div>
+        </div>
+        <div class="order-5 md:order-4 flex flex-col inline-flex w-full gap-2">
+          <div class="w-full">
+            <div class="text-sm font-medium leading-none mb-1 text-end">
+              или Картинка
+            </div>
+            <input
+              id="right-image-url"
+              class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm bg-transparent text-sm font-medium"
+              placeholder="ссылка"
+            />
+          </div>
+
+          <div class="w-full">
+            <div class="text-sm font-medium leading-none mb-1 text-end">
+              или Файл
+            </div>
+            <input
+              id="right-image-file"
+              class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm bg-transparent text-sm font-medium file:border-0 file:bg-transparent file:text-sm"
+              type="file"
+              accept="image/*"
+            />
+          </div>
+        </div>
+
+        <div class="mt-1 order-3 md:order-5">
+          <button
+            id="stok-button"
+            class="px-3.5 py-1 text-md bg-black text-white inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium"
+          >
+            Случайная фотка со стока
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 32 32"
+              class="size-4 ml-2 fill-white"
+            >
+              <path
+                d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"
+                fill="#ffffff"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="mt-1 order-5 md:order-6 leading-none text-end">
+          <a
+            class="text-blue-600 hover:text-blue-800 hover:underline visited:text-purple-600"
+            href="https://www.kinopoisk.ru/name/21495/photos/"
+            >Здесь</a
+          >
+          можно найти больше фото Кристиана
+        </div>
+      </div>
+
+      <div>
+        <div
+          class="mt-5 md:mt-0 inline-flex text-lg font-medium leading-none mb-2 text-start"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5 mr-1 shrink-0 self-center"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+            />
+          </svg>
+          Подпись снизу
+        </div>
+        <textarea
+          id="down-text-edit"
+          placeholder="Текст мема"
+          class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground"
+        >
+Кристиан Бейл стал ____&#10;_______, чтобы сыграть&#10;_____ в новом фильме
+        </textarea>
+      </div>
+    </div>
+
+    <div class="">
+      <div
+        class="mt-5 md:mt-0 text-xl font-medium leading-none mb-4 text-center"
+      >
+        Предпросмотр
+      </div>
+
+      <div class="size-[92vw] mx-auto">
+        <div id="image" class="flex flex-col">
+          <div class="flex flex-row">
+            <img crossorigin="anonymous" id="left-image" />
+            <img crossorigin="anonymous" id="right-image" />
+          </div>
+          <div
+            id="down-text"
+            class="py-[3vw] text-[4vw] font-bold flex flex-col text-center"
+          ></div>
+        </div>
+
+        <button
+          id="download-button"
+          class="px-3 py-1 mt-4 text-md bg-black text-white inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium"
+        >
+          Скачать
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-5 ml-1"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
