@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-groupedlayercontrol/0.6.1/leaflet.groupedlayercontrol.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-groupedlayercontrol/0.6.1/leaflet.groupedlayercontrol.js"></script>
+
+    <script src="constants.js"></script>
+    <script src="init.js" defer></script>
+    <script src="state.js" defer></script>
+    <script src="fetchFiles.js" defer></script>
+    <script src="filter.js" defer></script>
+    <script src="table.js" defer></script>
+    <script src="presentaionMode.js" defer></script>
+    <script src="main.js" defer></script>
+
+    <title>Тестовое</title>
+  </head>
+  <body>
+    <div id="map" class="h-[60vh]"></div>
+    <div id="map" class="h-[10vh]">
+      <div class="flex flex-row w-full gap-3 p-4">
+        <p class="text-sm self-center font-medium leading-none">
+          Фильтр по названию
+        </p>
+        <input
+          class="flex h-10 grow rounded-md border px-3 py-2 text-sm"
+          id="name_filter"
+        />
+      </div>
+    </div>
+    <div class="overflow-auto h-[30vh]">
+      <table id="table" class="w-full caption-bottom text-sm">
+        <thead id="thead"></thead>
+        <tbody id="tbody" class="[&_tr:last-child]:border-0"></tbody>
+      </table>
+    </div>
+  </body>
+</html>
