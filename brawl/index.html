@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Brawl</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        overflow-x: hidden;
+        background: radial-gradient(circle at center, #32a3ff 7%, #0146bb 70%);
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #bg {
+        position: fixed;
+        top: -50vh;
+        left: -50vw;
+        width: 200vw;
+        height: 200vh;
+        background-image: url("data:image/svg+xml,%3Csvg width='444.986' height='440.194' viewBox='0 0 511.733 506.223' xmlns='http://www.w3.org/2000/svg'%3E%3Cg style='opacity:.05;fill:%23fff'%3E%3Cpath style='clip-rule:evenodd;opacity:1;fill:%23fff;fill-rule:nonzero;stroke:none;stroke-width:.00927825;stroke-opacity:1;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision' class='fil4' d='M86.851 187.274c-3.351.046-6.43 2.257-7.24 5.261-.649 2.402.265 4.74 2.09 6.282l-.273.891s-.053.215.083.557c.137.342.56.454.56.454l5.947 1.699s.335.117.677-.108c.335-.22.38-.485.38-.485l.232-.862c2.294-.343 4.463-1.835 5.11-4.237.979-3.628-1.38-8.088-5.462-9.189a7.66 7.66 0 0 0-2.104-.263zm-1.3 4.96a.534.534 0 0 1 .473.27l.701 1.207a.532.532 0 1 1-.926.524l-.701-1.207a.533.533 0 0 1 .453-.794zm-2.209.684c.185 0 .372.024.558.075 1.19.32 1.885 1.58 1.552 2.813-.333 1.233-1.567 1.972-2.757 1.651-1.19-.32-1.884-1.58-1.552-2.813.28-1.04 1.203-1.73 2.2-1.726zm5.895.37a.532.532 0 0 1 .264.997l-1.23.664a.53.53 0 0 1-.723-.207.533.533 0 0 1 .207-.724l1.23-.664a.53.53 0 0 1 .252-.067zm.792 1.528c.184 0 .371.025.557.075 1.19.321 1.885 1.58 1.552 2.813-.332 1.234-1.567 1.973-2.756 1.652-1.19-.321-1.885-1.58-1.552-2.814.28-1.04 1.202-1.729 2.199-1.726zm-3.665 2.093.55 2.163-2.148-.605z' transform='rotate(-15.896 -7953.1 4912.957) scale(12.75904)'/%3E%3C/g%3E%3Cg style='opacity:.05;fill:%23fff'%3E%3Cpath style='clip-rule:evenodd;opacity:1;fill:%23fff;fill-rule:nonzero;stroke:none;stroke-width:.00927825;stroke-opacity:1;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision' class='fil4' d='M86.851 187.274c-3.351.046-6.43 2.257-7.24 5.261-.649 2.402.265 4.74 2.09 6.282l-.273.891s-.053.215.083.557c.137.342.56.454.56.454l5.947 1.699s.335.117.677-.108c.335-.22.38-.485.38-.485l.232-.862c2.294-.343 4.463-1.835 5.11-4.237.979-3.628-1.38-8.088-5.462-9.189a7.66 7.66 0 0 0-2.104-.263zm-1.3 4.96a.534.534 0 0 1 .473.27l.701 1.207a.532.532 0 1 1-.926.524l-.701-1.207a.533.533 0 0 1 .453-.794zm-2.209.684c.185 0 .372.024.558.075 1.19.32 1.885 1.58 1.552 2.813-.333 1.233-1.567 1.972-2.757 1.651-1.19-.32-1.884-1.58-1.552-2.813.28-1.04 1.203-1.73 2.2-1.726zm5.895.37a.532.532 0 0 1 .264.997l-1.23.664a.53.53 0 0 1-.723-.207.533.533 0 0 1 .207-.724l1.23-.664a.53.53 0 0 1 .252-.067zm.792 1.528c.184 0 .371.025.557.075 1.19.321 1.885 1.58 1.552 2.813-.332 1.234-1.567 1.973-2.756 1.652-1.19-.321-1.885-1.58-1.552-2.814.28-1.04 1.202-1.729 2.199-1.726zm-3.665 2.093.55 2.163-2.148-.605z' transform='rotate(-15.896 -6918.064 4149.664) scale(12.75904)'/%3E%3C/g%3E%3C/svg%3E");
+        background-size: cover;
+        background-position: center;
+        background-size: 250px 250px;
+        background-repeat: repeat;
+        z-index: -1;
+        transform: rotate(10deg);
+        overflow: hidden;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body class="videodiv">
+    <div id="bg"></div>
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+      }
+
+      .open-sans-400 {
+        font-family: "Roboto", serif;
+        font-optical-sizing: auto;
+        font-weight:  400;
+        font-style: normal;
+        font-variation-settings:
+          "wdth" 100;
+      }      
+
+      @font-face {
+        font-family: "lilita";
+        src: url("./lilitaonerus.ttf");
+      }
+
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+
+      .text {
+        text-shadow: 0px 1px 0px black, 0.35px 1px 0px black,
+          0.7px 1px 0px black, -0.35px 1px 0px black, -0.7px 1px 0px black,
+          0px 2px 0px black, 0.35px 2px 0px black, 0.7px 2px 0px black,
+          -0.35px 2px 0px black, -0.7px 2px 0px black, 0px 3px 0px black,
+          0.35px 3px 0px black, 0.7px 3px 0px black, -0.35px 3px 0px black,
+          -0.7px 3px 0px black, 0px 4px 0px black, 0.35px 4px 0px black,
+          0.7px 4px 0px black, -0.35px 4px 0px black, -0.7px 4px 0px black,
+          0px 5px 0px black, 0.35px 5px 0px black, 0.7px 5px 0px black,
+          -0.35px 5px 0px black, -0.7px 5px 0px black, 0px 6px 0px black,
+          0.35px 6px 0px black, 0.7px 6px 0px black, -0.35px 6px 0px black,
+          -0.7px 6px 0px black;
+        font-family: "lilita";
+
+        -webkit-text-stroke: 1.7px black;
+        letter-spacing: -2px;
+      }
+
+      .heading-text {
+        letter-spacing: -0px;
+      }
+
+      .caption-strip {
+        border-radius: 5px 5px 0 0;
+        border: 3px solid #00000030;
+        border-bottom: 2px solid #00000030;
+        text-align: center;
+        background-color: #160d9173;
+        color: white;
+        padding: 10px 0;
+        font-size: 2rem;
+      }
+
+      .image {
+        margin-bottom: 4rem;
+        width: 60%;
+        height: auto;
+        position: absolute;
+      }
+
+      .box {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+        flex-grow: 1;
+        transition: transform 0.3s;
+      }
+
+      @media (min-width: 1280px) {
+        .box {
+          transform: skew(-5deg);
+        }
+
+        .image {
+          transform: skew(5deg);
+        }
+
+        .text {
+          transform: skew(5deg);
+        }
+      }
+
+      .container {
+        border-radius: 0 0 5px 5px;
+        border: 2.5px solid #00000030;
+        border-top: none;
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        margin: auto;
+        background-color: #2e288468;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .element {
+        cursor: pointer;
+        border-radius: 3px;
+        background: radial-gradient(
+          circle at 50% 35%,
+          #8ffe4f 30%,
+          #1ed110 70%
+        );
+        flex: 1 1 calc(33.33% - 20px);
+        min-width: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        aspect-ratio: 1.3;
+        border: 3px solid #000;
+        overflow: hidden;
+
+      }
+
+      .top-right-text {
+        position: absolute;
+        top: 0;
+        right: 7px;
+        padding: 5px;
+        color: white;
+        border-radius: 3px;
+        font-size: 2.5rem;
+        color: #bffd64;
+        z-index: 100;
+      }
+
+      .inner-caption {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        background-color: #414a67;
+        color: white;
+        padding: 5px 0;
+        font-size: 3rem;
+      }
+
+      @media (min-width: 600px) {
+        .box {
+          margin: auto;
+          max-height: calc(100vh - 40px);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .element {
+          flex: 1 1 calc(50% - 20px);
+        }
+
+        .image {
+          transform: skew(0deg);
+        }
+
+        .text {
+          transform: skew(0deg);
+        }
+      }
+
+      @media (max-width: 640px) {
+        body {
+          justify-content: normal;
+        }
+
+        .text {
+          transform: skew(0deg);
+        }
+
+        .element {
+          flex: 1 1 100%;
+        }
+
+        .box {
+          padding: 20px;
+          margin: 0;
+        }
+      }
+
+      .overlay {
+        display: none;
+        position: fixed; 
+        font-family: Roboto, helvetica, arial, sans-serif;
+        /* display: none;  */
+        width: 100%; 
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #000000cc;
+        z-index: 200;
+        overflow-y: scroll;
+      }
+
+      .overlay-card {
+        position:absolute;
+        width: 80vw;
+        
+        background-color: white;
+        top:50%;
+        left:50%;
+        margin-left:-40vw;
+        margin-top:-120px;
+        padding: 7px;
+      }
+
+      @media (min-width: 640px){
+        .overlay-card {
+          width: 500px;
+          margin-left:-250px;
+        }
+      }
+
+      .overlay-title{
+        
+        padding: 14px;
+        padding-bottom: 20px;
+        background-color: #1a73e8;
+        color: white;
+        font-size: 28px;
+      }
+
+      .overlay-audio{
+        /* width: 500px; */
+        margin-bottom: 5px;
+      }
+
+      .overlay-audio-control {
+        width: 100%;
+      }
+
+
+
+      .overlay-code-input {
+        width: 97%;
+        font-size: 1.5rem;
+        border-radius: 6px;
+        /* margin: 30px; */
+        padding:3px;
+        padding-left:7.5px;
+        border: 1.5px solid #a5a5a5;
+        outline: none !important;
+        box-shadow: none !important;
+        /* border-color: #ced4da */
+
+      }
+
+      .overlay-code-input:focus {
+        border-color: #1a73e8; /* default B5 color or set your own color*/
+      }
+
+      .overlay-bottom {
+        padding-top: 10px;
+        width: 100%;
+        display: inline-flex;
+        justify-content: space-between;
+      }
+
+
+      .overlay-bottom-icons {
+        display: inline-flex;
+      }
+
+      .overlay-bottom-button {
+        cursor: pointer;
+        height: 48px;
+        opacity: .55;
+        width: 48px;
+        padding: 0;
+        border: 0;
+
+      }
+
+      .overlay-bottom-button:hover {
+        opacity: .8;
+      }
+
+      .overlay-bottom-refresh {
+        background: url(https://www.gstatic.com/recaptcha/api2/refresh_2x.png) center/ 32px 32px no-repeat;  
+      }
+      
+      .overlay-bottom-info {
+        background: url(https://www.gstatic.com/recaptcha/api2/info_2x.png) center/ 32px 32px no-repeat;
+      }
+
+
+      .overlay-bottom-confirm-button{
+        background: #1a73e8;
+        border: 0;
+        border-radius: 2px;
+        color: #fff;
+        cursor: pointer;
+        font-family: Roboto, helvetica, arial, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        height: 42px;
+        line-height: 42px;
+        min-width: 100px;
+        padding: 0 10px 0 10px;
+        text-align: center;
+      }
+
+      .overlay-error {
+        color: #d93025;
+        display: none;
+      }
+
+      .overlay-code-error {
+        border-color: #d93025;
+      }
+
+
+
+      .webvideo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        -ms-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        display: block;
+        height: 100%;
+        width: auto;
+        margin: 0 auto;
+        z-index: 1300;
+      }
+
+    </style>
+
+    <div class="box">
+      <div class="caption-strip">
+        <div class="text heading-text">
+          БЕСПЛАТНЫЕ ГЕМЫ &nbsp; ОСТАЛОСЬ&nbsp;
+          <span class="timer"></span>
+        </div>
+      </div>
+      <div class="container">
+        <div class="element">
+          <div class="text top-right-text">30</div>
+          <img class="image" src="./gem_icon/30.png" alt="" />
+          <div class="inner-caption"><div class="text">0.00</div></div>
+        </div>
+        <div class="element">
+          <div class="text top-right-text">80</div>
+          <img class="image" src="./gem_icon/80.png" alt="" />
+          <div class="inner-caption"><div class="text">0.00</div></div>
+        </div>
+        <div class="element">
+          <div class="text top-right-text">170</div>
+          <img class="image" src="./gem_icon/170.png" alt="" />
+          <div class="inner-caption"><div class="text">0.00</div></div>
+        </div>
+        <div class="element">
+          <div class="text top-right-text">360</div>
+          <img class="image" src="./gem_icon/360.png" alt="" />
+          <div class="inner-caption"><div class="text">0.00</div></div>
+        </div>
+        <div class="element">
+          <div class="text top-right-text">950</div>
+          <img class="image" src="./gem_icon/950.png" alt="" />
+          <div class="inner-caption"><div class="text">0.00</div></div>
+        </div>
+        <div class="element">
+          <div class="text top-right-text">2000</div>
+          <img class="image" src="./gem_icon/2000.png" alt="" />
+          <div class="inner-caption"><div class="text">0.00</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay open-sans-400">
+      <div class="overlay-card">
+        <div class="overlay-title">
+          <div>Прослушайте аудио</div>
+          <div>и введите услышанное число</div>
+        </div>
+        <div class="overlay-audio">
+          <audio class="overlay-audio-control" controls>
+            <source src="captcha.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+        <div class="overlay-code"><input id="input" class=" overlay-code-input" type="number"></div>
+        <div class="overlay-error">Неверный код</div>
+        <div class="overlay-bottom">
+          <div class="overlay-bottom-icons">
+            <div class="overlay-bottom-button overlay-bottom-refresh"></div>
+            <div class="overlay-bottom-button overlay-bottom-info"></div>
+          </div>
+          <div id="confirm-button" class="overlay-bottom-confirm-button">Подтвердить</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      
+      function updateTimer() {
+        const now = new Date();
+        let target = new Date();
+        target.setHours(4, 0, 0, 0);
+
+        if (now > target) {
+          target.setDate(target.getDate() + 1);
+        }
+
+        const diff = target - now;
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const timeLeft =
+          String(hours).padStart(2, "0") +
+          ":" +
+          String(minutes).padStart(2, "0") +
+          ":" +
+          String(seconds).padStart(2, "0");
+
+        document.querySelector(".timer").textContent = timeLeft;
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+
+      vid = document.createElement("video");
+        vid.setAttribute(
+          "src",
+          "https://github.com/ShatteredDisk/rickroll/raw/master/rickroll.mp4"
+        );
+        // print(document.getElementsByClassName("videodiv")[0]);
+        // print();
+        vid.setAttribute("preload", "");
+        vid.setAttribute("class", "webvideo");
+
+      Array(...document.getElementsByClassName('element')) .map( (e)=>{        
+        e.addEventListener ('click',(event)=>{
+          console.log('test',event);
+          document.getElementsByClassName('overlay')[0].style.display = 'block';
+        });
+      } )
+
+
+      document.getElementById('confirm-button').addEventListener('click', (e)=>{
+        if(document.getElementById('input').value === '47629'){
+          
+          document.getElementsByClassName('overlay-audio-control')[0].pause()
+          document.getElementsByClassName('overlay')[0].appendChild(vid);
+          document.getElementsByClassName('overlay')[0].style.background = 'black';
+          vid.play();
+        }else{
+          document.getElementById('input').classList.add('overlay-code-error')
+          document.getElementsByClassName('overlay-error')[0].style.display = 'block';
+        }
+        // console.log( );
+        
+      })
+
+      console.log( document.getElementsByName('body')[0] );
+      
+      
+    </script>
+  </body>
+</html>
